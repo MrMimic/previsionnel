@@ -14,7 +14,7 @@ def simulate(
     TEMPS_AVANT_ABONNEMENT_MOIS=3,
     PRET_INITIAL=50000
 ):
-    df = pd.DataFrame(index=range(1, 25))
+    df = pd.DataFrame(index=range(1, 50))
     df.index.name = 'MOIS'
 
     df['COMMANDES'] = COMMANDES_MENSUELLES
@@ -41,12 +41,12 @@ st.set_page_config(page_title="APL", layout="wide")
 
 cols = st.columns(6)
 with cols[0]:
-    CHARGE_COUT_PAR_MACHINE = st.number_input("CHARGE: coût machine (/u)", value=15000)
-    CHARGES_SALAIRE_SOUHAITE = st.number_input("CHARGE: salaire souhaité (brut)", value=0)
+    CHARGE_COUT_PAR_MACHINE = st.number_input("CHARGE: coût machine (/u)", value=15000, step=100)
+    CHARGES_SALAIRE_SOUHAITE = st.number_input("CHARGE: salaire souhaité (brut)", value=0, step=100)
 
 
 with cols[1]:
-    CHARGE_COUT_DEPLACEMENT_PAR_ABO = st.number_input("CHARGE: coût déplacement / abo", value=500)
+    CHARGE_COUT_DEPLACEMENT_PAR_ABO = st.number_input("CHARGE: coût déplacement / abo", value=500, step=10)
     CHARGES_REMBOURSEMENT_PRET = st.number_input("CHARGE: Mensualité remboursement prêt", value=1000)
 
 
@@ -57,7 +57,7 @@ with cols[2]:
 
 with cols[3]:
     TEMPS_AVANT_ABONNEMENT_MOIS = st.number_input("Mois avant début abo (après commande)", value=3)
-    COMMANDES_MENSUELLES = st.number_input("Commandes mensuelles", value=1)
+    COMMANDES_MENSUELLES = st.number_input("Commandes mensuelles", value=1.0, step=0.1)
 
 with cols[4]:
     CA_PRIX_ABONNEMENT = st.number_input("CA: Prix abonnement mensuel", value=750)
